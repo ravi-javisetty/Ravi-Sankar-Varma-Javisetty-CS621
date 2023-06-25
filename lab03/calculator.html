@@ -1,0 +1,128 @@
+<html>
+<head>
+  <title>Lab03</title>
+  <style>
+    #screen {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 20px;
+    height: 60px;
+    width: 22%;
+    border: 2px solid #2948b2;
+    border-radius: 4px;
+    }
+
+    .buttons button {
+    width: 5%;
+    height: 44px;
+    margin: 2px;
+    font-size: 18px;
+    }
+
+    button {
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    }
+
+    .equal{background-color:#3b9bfc ;}
+    .equal:hover{background-color: #2948b2; color: white;}
+    .equal:active{ background-color: #172965 ; }
+    button:hover {background-color: #808080;color: white;}
+    button:active{background-color: #2B2D2F;}
+</style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="screen" readonly >
+    <div class="buttons">
+      <button onclick="specail('sqrt')">&radic;</button>
+      <button onclick="addToResult('**')">x<sup>y</sup></button>
+      <button onclick="clearAll()" style="width: 10.5%;">C</button>
+      <br>
+      <button onclick="specail('tan')">tan</button>
+      <button onclick="specail('sin')">sin</button>
+      <button onclick="specail('cos')">cos</sup></button>
+      <button onclick="remove()">&#x232B;</button>
+      <br>
+      <button onclick="addToResult('7')">7</button>
+      <button onclick="addToResult('8')">8</button>
+      <button onclick="addToResult('9')">9</button>
+      <button onclick="addToResult('/')">/</button>
+      <br>
+      <button onclick="addToResult('4')">4</button>
+      <button onclick="addToResult('5')">5</button>
+      <button onclick="addToResult('6')">6</button>
+      <button onclick="addToResult('*')">*</button>
+      <br>
+      <button onclick="addToResult('1')">1</button>
+      <button onclick="addToResult('2')">2</button>
+      <button onclick="addToResult('3')">3</button>
+      <button onclick="addToResult('-')">-</button>
+      <br>
+      <button onclick="addToResult('.')">.</button>
+      <button onclick="addToResult('0')">0</button>
+      <button onclick="evaltext()" class="equal" >=</button>
+      <button onclick="addToResult('+')">+</button>
+    </div>
+  </div>
+
+  <script>
+    var isLastNumber;
+    function addToResult(value) {
+        isLastNumber=IsOnlyNumbers(value) ? true:false;
+        document.getElementById('screen').value += value;
+    }
+
+    function clearAll(){
+        document.getElementById('screen').value = '';
+    }
+
+    function remove(){
+        var strValue=document.getElementById('screen').value;
+        if(strValue)
+        document.getElementById('screen').value =strValue.substring(0,strValue.length-1);
+    }
+
+    function evaltext(){
+        var strValue = document.getElementById('screen').value;
+        if (strValue) {
+            var result = calc(strValue);
+            document.getElementById('screen').value = result;
+        }
+    }
+
+    function specail(value){
+        var strValue = document.getElementById('screen').value;
+        if (strValue) {
+            var val=eval("Math."+value+"("+calc(strValue)+")");
+            document.getElementById('screen').value = val;
+        }
+        else{
+            document.getElementById('screen').value=0;
+        }
+    }
+
+    function calc(value){
+        try{
+            if(!isLastNumber)
+            {
+                value=value.substring(0,value.length-1);
+            }
+            return eval(value);
+        }
+        catch
+        {
+            document.getElementById('screen').value=0;
+        }
+    }
+
+    function IsOnlyNumbers(str) {
+        return /^[0-9.]+$/.test(str);
+    }
+  </script>
+</body>
+</html>
