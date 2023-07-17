@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template,request,redirect,url_for
 app=Flask(__name__)
 @app.route('/',methods=['GET'])
@@ -12,10 +13,10 @@ def report():
     dig_check=False
     check_status=False
     for i in password:
-        if(i.islower()):
+        if(re.search(r'[a-z]',i)):
             lc=True
     for i in password:
-        if(i.isupper()):
+        if(re.search(r'[A-Z]',i)):
             uc=True
     if (len(password)>=8):
         len_pass=True
