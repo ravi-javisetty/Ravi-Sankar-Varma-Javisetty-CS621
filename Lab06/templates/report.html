@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<p> Password Status</p>
+    {% if check_status %}
+        <p>Your password has all the requirements</p>
+    {% else %}
+        <p>There's something wrong with your password</p>
+        {% if not lc %}
+            <p>There is no lower case character</p>
+        {% endif %}
+        {% if not uc %}
+        <p>There is no upper case character</p>
+        {% endif %}
+        {% if not len_pass %}
+        <p>Your password is less than 8</p>
+        {% endif %}
+        {% if not dig_check%}
+        <p>Last character in your password is not digit</p>
+        {% endif %}
+    {% endif %}
+    <p><a href="/">Checker Page</a></p>
+{% endblock %}
+    

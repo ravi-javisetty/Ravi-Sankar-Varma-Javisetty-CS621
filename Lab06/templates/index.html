@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="/report">
+<P>Make sure your password follows these restraints</P>
+<ul>
+    <li>It should be of 8 character length</li>
+    <li>It should have one lower case character</li>
+    <li>It should have one upper case character</li>
+    <li>It should have digit as last character</li>
+</ul>
+<label for="name">Username</label>
+<input id="name" type="text"  placeholder="Enter your Username" >
+<label for="pass">Password</label>
+<input id="pass" name="pass" type="password" placeholder="Enter your Password" >
+<input type="submit" value="Submit">
+</form>
+{% endblock %}
