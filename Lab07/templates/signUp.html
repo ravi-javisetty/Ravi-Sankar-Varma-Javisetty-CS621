@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign Up</title>
+	<style>
+body {
+  background-color: #9f9da7;
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #2b3e51;
+}
+input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  line-height: 60px;
+  border-radius: 4px;
+}
+p {
+  position: relative;
+}
+#container {
+  background-color: #fff;
+  width: 35%;
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px 0 0 0;
+  border-radius: 4px;
+  box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+#login-form {
+  padding: 0 60px;
+}
+
+#create-container {
+  background-color: #eeedf1;
+  color: #8a8b8e;
+  font-size: 14px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #c2c0ca;
+}
+
+.equal{background-color:#3b9bfc ;}
+.equal:hover{background-color: #2948b2; color: white;}
+.equal:active{ background-color: #172965 ; }
+</style>
+</head>
+<body>
+    {% if not check_status %}
+        <p>There's something wrong with your password</p>
+        {% if not lc %}
+            <p>There is no lower case character</p>
+        {% endif %}
+        {% if not uc %}
+        <p>There is no upper case character</p>
+        {% endif %}
+        {% if not len_pass %}
+        <p>Your password is less than 8</p>
+        {% endif %}
+        {% if not dig_check%}
+        <p>Last character in your password is not digit</p>
+        {% endif %}
+    {% endif %}
+
+    {% if messages %}
+    <h2>{{messages}}</h2>
+   {% endif %}
+<div id="container">
+  <h2 style="font-weight: 300; text-align: center;">Register</h2>
+  <form id="login-form" method="POST" action="">
+    
+    <p><table style="width: 100%;">
+        <tr>
+            <td><input type="text" id="firstName" value="{{firstName}}" name="firstName" placeholder="First Name" required style="height: 30px;"></td>
+            <td><input type="text" id="lastName" value="{{lastName}}" name="lastName" placeholder="Last Name" required style="height: 30px;"></td>
+        </tr>
+    </table></p>
+    <p><input type="email" id="email" name="email" value="{{email}}" placeholder="Email Address" required style="height: 30px;"></p>
+    <p><input type="password" id="password" value="{{password}}" name="password" placeholder="Password" required style="height: 30px;"></p>
+    <p><input type="password" id="conformpass" value="{{conformpass}}" name="conformpass" placeholder="Confirm Password" required style="height: 30px;"></p>
+    <p><input type="submit" id="login" value="Register Now" class="equal" style="font-weight: bold;text-transform: uppercase;cursor: pointer;"></p>
+  </form>
+  <div id="create-container">
+    <p>Already have an account? <a href="/">Sign In</a><p>
+  </div><!--create-container-->
+</div><!--container-->
+</body>
+</html>

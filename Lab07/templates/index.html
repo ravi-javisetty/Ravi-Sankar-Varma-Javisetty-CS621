@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7</title>
+	<style>
+body {
+  background-color: #9f9da7;
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #2b3e51;
+}
+input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 4px;
+}
+
+#container {
+  background-color: #fff;
+  width: 35%;
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px 0 0 0;
+  border-radius: 4px;
+  box-shadow: 0px 30px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+#login-form {
+  padding: 0 60px;
+}
+
+#create-container {
+  background-color: #eeedf1;
+  color: #8a8b8e;
+  font-size: 14px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #c2c0ca;
+}
+
+.equal{background-color:#3b9bfc ;}
+.equal:hover{background-color: #2948b2; color: white;}
+.equal:active{ background-color: #172965 ; }
+</style>
+</head>
+<body>
+    {% if messages %}
+    <h2>{{messages}}</h2>
+   {% endif %}
+<div id="container">
+  <h2 style="font-weight: 300; text-align: center;">Login to Your Account</h2>
+  <form id="login-form" method="POST" action="/">    
+      <input type="email" id="email" value="{{email}}" name="email" placeholder="Email Address" required>
+      <br>
+      <input type="password" id="password" name="password" placeholder="password" required>
+      <br>
+    <input type="submit" id="login" value="Login" class="equal" style="font-weight: bold;text-transform: uppercase;cursor: pointer;">
+    <br>
+  </form>
+  <div id="create-container">
+    <p>Not a member Yet? <a href="/signUp">Create an Account</a><p>
+  </div><!--create-container-->
+</div><!--container-->
+</body>
+</html>
